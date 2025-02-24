@@ -12,7 +12,7 @@ cp hygg/project/settings/templates/settings.dev.py ./local/settings.dev.py
 2. Create and activate your virtual environment:
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 
