@@ -1,3 +1,11 @@
+.PHONY: local-settings
+local-settings:
+	mkdir local && cp hygg/project/settings/templates/settings.dev.py ./local/settings.dev.py
+
+.PHONY: venv
+make-env:
+	python3 -m venv venv && source venv/bin/activate
+
 .PHONY: install
 install:
 	poetry install --no-root
@@ -45,5 +53,4 @@ prune-all:
 update: install migrate install-pre-commit ;
 
 .PHONY: setup
-setup: up-dependencies-only update createsuperuser runserver
-	@echo "Project setup complete!"
+setup: local-settings venv up-dependencies-only update createsuperuser runserver ;
