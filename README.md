@@ -1,5 +1,11 @@
 # Hygg Project Setup Guide
 
+## Requirements
+
+1. Python >= 3.12
+
+2. Poetry 2.1
+
 ## Installation
 
 1. Create your local settings file:
