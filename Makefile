@@ -26,5 +26,24 @@ runserver:
 createsuperuser:
 	poetry run python -m hygg.manage createsuperuser
 
+.PHONY: up-dependencies-only
+up-dependencies-only:
+	test -f .env || touch .env
+	docker compose -f docker-compose.dev.yml up --force-recreate -d db
+
+.PHONY: stop-dependencies
+stop-dependencies:
+	docker compose -f docker-compose.dev.yml stop db
+
+.PHONY: prune-all
+prune-all:
+	docker compose -f docker-compose.dev.yml down -v
+	docker system prune --all -f
+	docker volume prune -f
+
 .PHONY: update
 update: install migrate install-pre-commit ;
+
+.PHONY: setup
+setup: up-dependencies-only update createsuperuser runserver
+	@echo "Project setup complete!"
