@@ -6,36 +6,51 @@
 
 2. Poetry 2.1
 
+3. Docker
+
 ## Installation
 
-1. Create your local settings file:
-
-```bash
-mkdir local
-cp hygg/project/settings/templates/settings.dev.py ./local/settings.dev.py
-```
-
-2. Create and activate your virtual environment:
+1. Create and activate your virtual environment:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Install the project dependencies:
+2. Setup the project:
+
+```bash
+make setup
+```
+
+## Useful Commands
+
+- Run the Project in Development Mode:
+
+```bash
+make dev
+```
+
+- Update after a Pull:
 
 ```bash
 make update
 ```
 
-4. Run the server:
-
-```bash
-make runserver
-```
-
-5. Run lint:
+- Run the Linter:
 
 ```bash
 make lint
+```
+
+- Start the Database Only:
+
+```bash
+make start-db
+```
+
+- Stop the Database:
+
+```bash
+make stop-db
 ```
